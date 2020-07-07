@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>todoList</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="inputValue"/>
+    <button @click="createTodoList">提交</button>
+    <ul>
+        <li v-for="item in list">{{item}}</li>
+    </ul>
+</div>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            list: [],
+            inputValue: ''
+        },
+        methods: {
+            createTodoList() {
+                if (!this.inputValue) {
+                    alert('请输入内容');
+                    return;
+                }
+                this.list.push(this.inputValue);
+                this.inputValue = '';
+            }
+        }
+    })
+</script>
+</body>
+</html>
