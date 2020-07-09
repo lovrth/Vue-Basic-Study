@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>方法</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{fullName()}}
+    {{age}}
+</div>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            firstName: 'xiao',
+            lastName: 'wang',
+            age: 26
+        },
+        methods: {
+            // methods没有缓存特性，如改变age的值，fullName()方法会被执行一遍
+            fullName() {
+                console.log("执行了一次方法计算fullName");
+                return this.firstName + "" + this.lastName;
+            }
+        }
+    });
+</script>
+</body>
+
+</html>

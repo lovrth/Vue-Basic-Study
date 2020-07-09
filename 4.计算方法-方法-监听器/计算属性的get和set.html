@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性的get和set</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{fullName}}
+    {{age}}
+</div>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            firstName: 'xiao',
+            lastName: 'wang',
+            age: 26
+        },
+        computed: {
+            // 可更改firstName和lastName的值 也可直接更改fullName的值
+            // 改变计算属性值的同时也改变和计算属性相关联的属性值
+            fullName: {
+                get() {
+
+                    return this.firstName + "" + this.lastName;
+                },
+                set(value) {
+                    var arr = value.split(".");
+                    this.firstName = arr[0];
+                    this.lastName = arr[1];
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

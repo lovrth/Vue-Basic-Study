@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue生命周期</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script>
+    var app = new Vue({
+        el: "#app",
+        template: '<span>{{test}}</span>',
+        data: {
+            test: 'hello world'
+        },
+        beforeCreate: function () {
+            console.log("beforeCreate");
+        },
+        created: function () {
+            console.log("created");
+        },
+        beforeMount: function () {
+            console.log(this.$el); // <div id="app"></div>  console测试--app.$el app.$data.test app.test
+            console.log("beforeMount");
+        },
+        mounted: function () {
+            console.log(this.$el); // <span>hello world</span>
+            console.log("mounted");
+        },
+        beforeUpdate: function () {
+            console.log("beforeUpdate")
+        },
+        updated: function () {
+            console.log("updated");
+        },
+        beforeDestroy: function () {
+            console.log("beforeDestroy")
+        },
+        destroyed: function () {
+            console.log("destroyed");
+        }
+    });
+</script>
+</body>
+</html>

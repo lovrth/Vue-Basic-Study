@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态组件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+<!--    <component>标签用于加载动态组件，根据:is指定的值来选择.并通过change事件来改变type的值-->
+    <component :is="type"></component>
+    <button @click="change">change</button>
+</div>
+<script>
+    Vue.component('child-one',{
+        template: '<div>child-one</div>'
+    });
+    Vue.component('child-two',{
+        template: '<div>child-two</div>'
+    });
+    var app = new Vue({
+        el: "#app",
+        data: {
+            type: 'child-one'
+        },
+        methods: {
+            change: function () {
+                this.type = (this.type === "child-one"?"child-two":"child-one");
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性（最适合）</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{fullName}}
+    {{age}}
+</div>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            firstName: 'xiao',
+            lastName: 'wang',
+            age: 26
+        },
+        computed: {
+            // 计算属性具有缓存功能，当firstName和lastName都不改变的时候，fullName不会重新计算
+            // 如改变age的值，fullName不会重新计算
+            // console测试 --> app.firstName='2xiao' app.fullName='3xiao.mao'
+            fullName() {
+                console.log('计算了一次属性 fullName');
+                return this.firstName + "" + this.lastName;
+            }
+        }
+    });
+</script>
+</body>
+</html>

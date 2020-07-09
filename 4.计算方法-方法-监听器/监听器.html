@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>监听器</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{fullName}}
+    {{age}}
+</div>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            firstName: 'xiao',
+            lastName: 'wang',
+            fullName: 'xiaowang',
+            age: 26
+        },
+        watch: {
+            // 具有缓存属性 改变age的值，fullName的值不会被重新计算
+            // 不过代码比计算属性computed啰嗦
+            firstName() {
+                console.log('计算了一次属性 fullName');
+                this.fullName = this.firstName + "" + this.lastName;
+            },
+            lastName() {
+                console.log('计算了一次属性 fullName');
+                this.fullName = this.firstName + "" + this.lastName;
+            }
+        }
+    });
+</script>
+</body>
+</html>

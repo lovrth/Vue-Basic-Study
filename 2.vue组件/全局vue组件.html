@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>todoList</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="inputValue"/>
+    <button @click="createTodoList">提交</button>
+    <ul>
+        <todo-item v-bind:content="item"
+                   v-bind:index="index"
+                   v-for="(item,index) in list">
+        </todo-item>
+    </ul>
+</div>
+<script>
+    Vue.component('TodoItem',{
+        props: ['content','index'],  //props属性用于父组件向子组件传递数据，绑定index和content变量
+        template: '<li>{{index+1}}-{{content}}</li>'
+    });
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            list: [],
+            inputValue: ''
+        },
+        methods: {
+            createTodoList() {
+                if (!this.inputValue) {
+                    alert('请输入内容');
+                    return;
+                }
+                this.list.push(this.inputValue);
+                this.inputValue = '';
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插槽slot</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <child>
+<!--        <template v-solt="xxx"><p>插槽slot的数据</p></template>-->
+        <p>插槽slot的数据</p>
+    </child>
+</div>
+<script>
+    Vue.component('child', {
+        // <slot name='xxx'></slot>
+        template: ` <div><slot></slot></div>`
+    });
+    const app = new Vue({
+        el: "#app"
+    });
+</script>
+</body>
+</html>

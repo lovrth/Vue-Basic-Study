@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>非父子间传值（简单）</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <child-one></child-one>
+    <child-two></child-two>
+</div>
+<script>
+    // 直接点击child-two弹出init；先点击child-one改变this.bus.name的值为one，再点击child-two将弹出one
+    Vue.prototype.bus = {name: 'init'};
+
+    Vue.component('child-one', {
+        template: '<div @click="handleClick" ref="one">child-one</div>',
+        methods: {
+            handleClick: function () {
+                this.bus.name = "one"
+            }
+        }
+    });
+    Vue.component('child-two', {
+        template: '<div @click="handleClick" ref="two">child-two</div>',
+        methods: {
+            handleClick: function () {
+                alert(this.bus.name);
+            }
+        }
+    });
+    var app = new Vue({
+        el: "#app"
+    });
+</script>
+</body>
+</html>

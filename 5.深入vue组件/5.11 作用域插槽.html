@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作用域插槽</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <child>
+        <li slot-scope="props">
+            {{props.item}}
+        </li>
+    </child>
+</div>
+<script>
+    Vue.component('child', {
+        data() {
+            return {
+                list: ['Java', 'JavaScript', 'Vue']
+            }
+        },
+        // :item=item绑定了list中的每一项数据，父组件中使用该插槽的时候用slot-scope="props"接收了这些数据
+        template: ` <div>
+                        <ul>
+                            <slot v-for="item of list" :item="item"></slot>
+                        </ul>
+                    </div>`
+    });
+    var app = new Vue({
+        el: "#app"
+    });
+</script>
+</body>
+</html>

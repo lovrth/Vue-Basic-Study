@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ref dom中使用</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div ref="div" @click="hello">hello world</div>
+</div>
+<script>
+    var app = new Vue({
+        el: "#app",
+        methods: {
+            hello(){
+                // this.$refs.div这里获取的是<div ref="div">这个DOM对象
+                alert(this.$refs.div.innerHTML);
+            }
+        }
+    });
+</script>
+</body>
+</html>

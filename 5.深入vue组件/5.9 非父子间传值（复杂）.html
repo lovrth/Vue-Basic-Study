@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>非父子间传值</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <child-one></child-one>
+    <child-two></child-two>
+</div>
+<script>
+    Vue.prototype.bus = new Vue();
+
+    Vue.component('child-one', {
+        template: '<div @click="handleClick" ref="one">child-one</div>',
+        methods: {
+            handleClick: function () {
+                this.bus.$emit("change", this.$refs.one.innerHTML);
+            }
+        }
+    });
+    Vue.component('child-two', {
+        template: '<div ref="two">child-two</div>',
+        mounted: function () {
+            var this_ = this;
+            this.bus.$on("change", function (message) {
+                alert(message);
+                this_.$refs.two.innerHTML = message
+            })
+        }
+    });
+    var app = new Vue({
+        el: "#app"
+    });
+</script>
+</body>
+</html>
