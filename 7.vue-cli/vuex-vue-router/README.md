@@ -40,4 +40,12 @@ build/：项目打包webpack配置处
 npm install vuex
 ```
 - src下新建一个store目录，创建index.js,创建了一个Store，并定义了state，里面包含一个name属性，值为xiaowang
-- 在main.js里引入Store,
+- 在main.js里引入Store,即根组件里引入了，所以任何子组件都可以使用
+- 使用Store里存的值
+```
+this.$store.state.name
+```
+- 改变Store里存的值,/store/index.js中mutations中添加changeName方法
+```
+this.$store.commit('changeName', 'newName')
+```

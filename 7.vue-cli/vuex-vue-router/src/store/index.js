@@ -6,5 +6,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     name: 'xiaowang'
+  },
+  mutations: {
+    changeName (state, name) {
+      state.name = name
+    }
   }
 })
