@@ -4,7 +4,7 @@
 3. v-bind指令用于绑定值，这里通过v-bind:content将content变量的值绑定为item(即list中的每个元素值)，通过v-bind:index将index变量的值绑定为index（即当前循环的下标），v-bind可以简写为:
 4. props属性用于向子组件传递数据，这里接收了由:bind指令传递了从父组件绑定过来的index和content变量
 5. template定义了模板，即这个Vue组件呈现的样子（通常都是一段HTML加上父组件传递过来的变量值）
-6. <div id="app">这个Dom结构已经被Vue接管，其内部又包含了<todo-item>Vue组件，所以我们将<div id="app">称之为父组件，<todo-item>称之为子组件。
+6. <div id="app">这个Dom结构已经被Vue接管，其内部又包含了<todo-item>Vue组件，所以我们将<div id="app">称之为父组件，<todo-item>称之为子组件
 
 #### 局部vue组件
 1. 定义了一个局部JS对象TodoItem，然后在Vue实例app中的components属性中引入了该对象，名称依旧是TodoItem，这种就是局部Vue组件
